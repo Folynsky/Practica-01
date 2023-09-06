@@ -68,3 +68,46 @@ ALTER TABLE comentarios
 
 ALTER TABLE comentarios
     ADD FOREIGN KEY (Posts_id) REFERENCES posts(post_id);
+
+ALTER TABLE usuarios
+ADD nombre_Usuario VARCHAR (60);
+
+ALTER TABLE usuarios
+ALTER COLUMN nombre_Usuario NOT NULL;
+
+ALTER TABLE usuarios
+ADD empresa VARCHAR (50); 
+
+ALTER TABLE usuarios
+DROP COLUMN Usuario_login;
+
+ALTER TABLE usuarios
+ADD telefono INT(10) NOT NULL;
+
+ALTER TABLE usuarios
+ADD pais VARCHAR (30) NOT NULL;
+
+ALTER TABLE usuarios
+ADD codigo_postal int(5) NOT NULL;
+
+ALTER TABLE usuarios
+MODIFY nombre_Usuario VARCHAR(60) NOT NULL;
+
+ALTER TABLE usuarios 
+MODIFY telefono INT (10) NOT NULL UNIQUE;
+
+ALTER TABLE posts
+MODIFY contenido VARCHAR(250) NOT NULL;
+
+ALTER TABLE usuarios
+ADD edad INT(10) NOT NULL CHECK (edad >= 18);
+
+CREATE TABLE Mensajeria (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    emisor INT,
+    receptor VARCHAR(30) NOT NULL,
+    fecha_creacion TIMESTAMP NOT NULL
+);
+
+ALTER TABLE Mensajeria
+    ADD FOREIGN KEY (emisor) REFERENCES usuarios(Usuario_id);
